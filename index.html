@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="./js/classes/static/Instagram.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./js/classes/user.js"
+      charset="UTF-8"
+    ></script>
+    <script
+      type="text/javascript"
+      src="./js/classes/photo.js"
+      charset="UTF-8"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./css/Instagram.css" />
+    <title>Instagram</title>
+    <script>
+      //Variable que trae la fecha actual
+      let date = new Date();
+
+      //Creación de 6 fotos
+      let photo1 = new Photo("1", date++);
+      let photo2 = new Photo("2", date++);
+      let photo3 = new Photo("3", date++);
+      let photo4 = new Photo("4", date++);
+      let photo5 = new Photo("5", date++);
+      let photo6 = new Photo("6", date++);
+
+      //Creacion de usuarios en la plataforma, tambien se prueba si esta controlado
+      Instagram.addUser("user1@user1.com", "1234");
+      Instagram.addUser("user2@user2.com", "1234");
+      Instagram.addUser("user3@user3.com", "1234");
+      Instagram.addUser("user1@user1.com", "1234");
+      Instagram.addUser("user4@user4.com", "1234");
+      Instagram.addUser("user5@user5.com", "1234");
+      Instagram.addUser("user6@user6.com", "1234");
+
+      //Se añaden fotos a los usuarios de la plataforma, tambien se prueba si esta controlado
+      Instagram.addPhoto("user1@user1.com", "1234", "1", date++);
+      Instagram.addPhoto("user2@user1.com", "1234", "1", date++);
+      Instagram.addPhoto("user1@user1.com", "1235", "1", date++);
+      Instagram.addPhoto("user1@user1.com", "1234", "1", date++);
+      Instagram.addPhoto("user1@user1.com", "1234", "2", date++);
+      Instagram.addPhoto("user1@user1.com", "1234", "3", date++);
+      Instagram.addPhoto("user1@user1.com", "1234", "4", date++);
+      Instagram.addPhoto("user1@user1.com", "1234", "5", date++);
+      Instagram.addPhoto("user1@user1.com", "1234", "6", date++);
+
+      //Se añaden likes a algunas fotos de usuarios de la plataforma, tambien se prueba si esta controlado
+      Instagram.addLikeToPhoto("user1@user1.com", "1234", "1");
+      Instagram.addLikeToPhoto("user1@user1.com", "1234", "2");
+      Instagram.addLikeToPhoto("user1@user1.com", "1234", "3");
+      Instagram.addLikeToPhoto("user1@user1.com", "1234", "3");
+      Instagram.addLikeToPhoto("user1@user1.com", "123", "1");
+      Instagram.addLikeToPhoto("user1@user1.com", "1234", "111");
+
+      //Se añaden follows a usuarios de la plataforma
+      Instagram.followUser("user1@user1.com", "1234", "user2@user2.com");
+      Instagram.followUser("user1@user1.com", "1234", "user2@user2.com");
+      Instagram.followUser("user1@user1.com", "1234", "user2@user2.com");
+      Instagram.followUser("user1@user1.com", "1234", "user3@user3.com");
+      Instagram.followUser("user4@user4.com", "1234", "user3@user3.com");
+      Instagram.followUser("user4@user4.com", "1234", "user4@user4.com");
+
+      //Se etiquetan a otros usuarios en fotos de la plataforma
+      Instagram.tagUser("user1@user1.com", "1234", "1", "user3@user3.com");
+      Instagram.tagUser("user1@user1.com", "1234", "2", "user4@user4.com");
+      Instagram.tagUser("user1@user1.com", "1234", "3", "user5@user5.com");
+      Instagram.tagUser("user1@user1.com", "1234", "4", "user5@user5.com");
+      Instagram.tagUser("user1@user1.com", "1234", "5", "user5@user5.com");
+      Instagram.tagUser("user1@user1.com", "1234", "6", "user5@user5.com");
+      Instagram.tagUser("user1@user1.com", "1234", "1", "user4@user4.com");
+      Instagram.tagUser("user1@user1.com", "1234", "2", "user5@user5.com");
+      Instagram.tagUser("user1@user1.com", "1234", "3", "user6@user7.com");
+      Instagram.tagUser("user1@user1.com", "1234", "4", "user1@user1.com");
+      Instagram.tagUser("user1@user1.com", "1234", "5", "user2@user2.com");
+      Instagram.tagUser("user1@user1.com", "1234", "6", "user3@user3.com");
+
+      //Muestra las fotos de un usuario de la plataforma
+      Instagram.showPhotos("user1@user1.com", "1234");
+
+      //Muesta las fotos en las que esta etiquetado un usuario de la plataforma
+      Instagram.showTaggedPhotos("user1@user1.com", "1234");
+    </script>
+  </head>
+  <body>
+    <div class="ordenar">
+      <div id="welcome-section" style="display: none">
+        <h2 class="bienvenido">Bienvenido</h2>
+        <p>Has iniciado sesión como <span id="user-email"></span></p>
+      </div>
+      <h1 class="titulo">Instagram</h1>
+      <form class="formulario" id="mostrarlogin" style="display: none">
+        <h2>Login</h2>
+        <label for="usuario">Usuario:</label>
+        <input
+          type="text"
+          id="usuariol"
+          name="usuario"
+          placeholder="Ingresa tu email"
+        />
+        <label for="password">Contraseña:</label>
+        <input
+          type="password"
+          id="passwordl"
+          name="password"
+          placeholder="Ingresa tu contraseña"
+        />
+        <button type="submit" class="boton" id="loginButton">
+          Iniciar sesión
+        </button>
+      </form>
+      <form
+        class="formulario"
+        id="formularioRegistro"
+        style="display: none; margin-top: 20px"
+      >
+        <h2>Registro</h2>
+        <label for="usuario">Usuario:</label>
+        <input
+          type="text"
+          id="usuarior"
+          name="usuario"
+          placeholder="Ingresa tu email"
+        />
+        <label for="password">Contraseña:</label>
+        <input
+          type="password"
+          id="passwordr"
+          name="password"
+          placeholder="Ingresa tu contraseña"
+        />
+        <button type="submit" class="boton" id="registrar">Registar</button>
+      </form>
+
+      <div id="vistaIncial" class="enlace"><button class="login" id="mostrar-login">Login</button>
+      <p  style="display: block">
+        
+        ¿No tienes una cuenta?
+          <button id="mostrar-formulario">Regístrate aquí</button></p></div>
+        
+      </p>
+    </div>
+  </body>
+  <script>
+    //Mostrar login
+    const botonMostrarLogin = document.getElementById("mostrar-login");
+    const login = document.getElementById("mostrarlogin");
+    botonMostrarLogin.addEventListener("click", () => {
+      login.style.display = "block";
+      vistaI.style.display = "none";
+    });
+
+    //Mostrar formulario de registro
+    const botonMostrarFormulario =
+      document.getElementById("mostrar-formulario");
+    const formulario = document.getElementById("formularioRegistro");
+
+    botonMostrarFormulario.addEventListener("click", () => {
+      formulario.style.display = "block";
+      vistaI.style.display = "none";
+    });
+
+    //Guardar registro en LocalStorage
+    const emailInput = document.getElementById("usuarior");
+    const passInput = document.getElementById("passwordr");
+    const enviarLocal = document.getElementById("registrar");
+
+    enviarLocal.addEventListener("click", (e) => {
+      e.preventDefault();
+      const emailValue = emailInput.value;
+      const passValue = passInput.value;
+
+      localStorage.setItem("email", emailValue);
+      localStorage.setItem("password", passValue);
+      Instagram.addUser(emailValue,passValue)
+      login.style.display = "block";
+      formulario.style.display = "none";
+      console.log(Instagram.users);
+      alert("Usuario registrado , loggeate!");
+    });
+
+    //Hacer login con el usuario guardado en localStorage
+    const emailInputL = document.getElementById("usuariol");
+    const passInputL = document.getElementById("passwordl");
+    const loginButton = document.getElementById("loginButton");
+    const welcomeSection = document.getElementById("welcome-section");
+    const userLogged = document.getElementById("user-email");
+    const vistaI = document.getElementById("vistaIncial");
+
+    loginButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      
+      const emailValueL = emailInputL.value;
+      const passwordValueL = passInputL.value;
+      const storedEmail = localStorage.getItem("email");
+      const storedPass = localStorage.getItem("password");
+      console.log(emailValueL);
+      console.log(storedEmail);
+      console.log(passwordValueL);
+      console.log(storedPass);
+      if (emailValueL === storedEmail && passwordValueL === storedPass) {
+        
+        welcomeSection.style.display = "block";
+        vistaI.style.display = "none";
+        login.style.display = "none";
+        userLogged.innerText = storedEmail;
+      } else {
+        alert("El correo o la contraseña no son validos");
+      }
+    });
+  </script>
+</html>

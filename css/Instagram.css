@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+  font-family: Arial, sans-serif;
+  background-image: url("./instagram-bg.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.login {
+  width: 150px;
+  margin: auto;
+}
+.bienvenido {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+h2 {
+  margin-top: 0;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+label {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 0.5rem 2rem;
+  background-color: #3897f0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #38a3f0;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+a {
+  color: #3897f0;
+}
+
+.enlace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
